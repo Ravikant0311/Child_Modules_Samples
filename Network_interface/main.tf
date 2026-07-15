@@ -8,7 +8,7 @@ data "azurerm_subnet" "subnet" {
 data "azurerm_public_ip" "pip" {
   for_each = var.nics
   name = each.value.pip_name
-  resource_group_name = each.value.resource_group_name
+  resource_group_name = each.value.nic_rg
   
 }
 
@@ -19,9 +19,9 @@ resource "azurerm_network_interface" "nic" {
   resource_group_name = each.value.nic_rg
 
   ip_configuration {
-    name                          = "internal"
-    subnet_id                     = each.value.nic_subnet_id
-    public_ip_address_id = each.value.nic_pip
+    name      = "internal"
+    subnet_id = data.azurerm_subnet.frontend_subnet[each.key].id
+    public_ip_address_id = data.azurerm_public_ip.linux_pip[each.key].id
     private_ip_address_allocation = "Dynamic"
   }
 }
