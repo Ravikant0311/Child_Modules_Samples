@@ -5,7 +5,5 @@ resource "azurerm_public_ip" "pip" {
   location            = each.value.location
   allocation_method   = each.value.allocation_method
 
-  tags = {
-    environment = "Production"
-  }
+  
 }
