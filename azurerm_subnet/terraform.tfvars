@@ -7,7 +7,7 @@ subnets = {
  
     }
     snet2 = {
-       name = "backent_subnet"
+       name = "backend_subnet"
     virtual_network_name= "prod-vnet"
     resource_group_name = "ravi"
     address_prefixes = ["10.0.2.0/24"]

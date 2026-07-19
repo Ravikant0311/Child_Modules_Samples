@@ -3,7 +3,7 @@ pips = {
         name                = "frontend_pip"
   resource_group_name = "ravi"
   location            = "centralindia"
-  allocation_method   = "static"
+  allocation_method   = "Static"
 
 
     }
@@ -11,6 +11,6 @@ pips = {
         name                = "backend_pip"
   resource_group_name = "ravi"
   location            = "centralindia"
-  allocation_method   = "static"
+  allocation_method   = "Static"
 }
 }
