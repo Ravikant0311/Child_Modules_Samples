@@ -17,7 +17,7 @@ resource "azurerm_key_vault" "kv" {
 
 }
 resource "azurerm_key_vault_secret" "vm_password" {
-  for_each = key_vaults
+  for_each = var.key_vaults
 
   name         = each.value.password_name
   value        = each.value.value
