@@ -31,6 +31,21 @@ module "Network_interface" {
     nics = var.nics
   
 }
+module "azurerm_network_security_group" {
+    depends_on = [ module.public_ip,module.subnet ]
+    source = "../../Modules/Network_Security_Group"
+    nsgs = var.nsgs
+    
+}
+
+module "subnet_nsg_associations" {
+    depends_on = [ module.azurerm_network_security_group ]
+    source = "../../Modules/Nsg_associates_Subnets"
+    Associated_nsgs= var.Associated_nsgs
+  
+}
+
+
 
 module "Virtual_Machine" {
     depends_on = [ module.Network_interface ]

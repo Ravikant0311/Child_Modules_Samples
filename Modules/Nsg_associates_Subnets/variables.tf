@@ -1,0 +1,3 @@
+variable "Associated_nsgs" {
+  
+}

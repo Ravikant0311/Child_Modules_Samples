@@ -1,0 +1,26 @@
+title = "Custom Gitleaks Rules"
+
+[[rules]]
+id = "hardcoded-password"
+description = "Hardcoded Password"
+regex = '''(?i)(password|admin_password|passwd|pwd)\s*[:=]\s*["'][^"']{4,}["']'''
+tags = ["password", "terraform", "secret"]
+
+[[rules]]
+id = "hardcoded-client-secret"
+description = "Hardcoded Client Secret"
+regex = '''(?i)(client_secret|secret|app_secret)\s*[:=]\s*["'][^"']{4,}["']'''
+tags = ["secret"]
+
+[[rules]]
+id = "hardcoded-api-key"
+description = "Hardcoded API Key"
+regex = '''(?i)(api_key|apikey|access_key)\s*[:=]\s*["'][^"']{8,}["']'''
+tags = ["apikey"]
+
+[[rules]]
+id = "terraform-tfvars-password"
+description = "Terraform tfvars Password"
+path = '''(?i).*\.tfvars$'''
+regex = '''(?i)admin_password\s*=\s*"[^"]+"'''
+tags = ["terraform", "tfvars"]

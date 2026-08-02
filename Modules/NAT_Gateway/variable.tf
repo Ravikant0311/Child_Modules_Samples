@@ -1,0 +1,3 @@
+variable "NAT_Gateway" {
+  
+}
