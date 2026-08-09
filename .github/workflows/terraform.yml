@@ -3,9 +3,8 @@ name: Terraform Pipeline
 on:
   push:
     branches:
-      - "feature/**"
       - main
-
+      - "feature/**"
   pull_request:
     branches:
       - main
@@ -15,32 +14,30 @@ permissions:
 
 jobs:
 
-  terraform:
+  terraform-plan:
     name: Terraform Plan
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: Environment/Prod
+
     steps:
 
-      # 1. Checkout
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Install Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      # 3. Terraform Init
       - name: Terraform Init
         run: terraform init
 
-      # 4. Terraform Format
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
 
-      # 5. Terraform Validate
       - name: Terraform Validate
         run: terraform validate
 
-      # 6. Terraform Plan
       - name: Terraform Plan
         run: terraform plan
